@@ -374,8 +374,12 @@ def numbers_increasing_forward(r, maxnum):
         x = x + str(k)
     for j in range(r):
         for l in range(maxnum):
-            for g in range(j+1):
+            for g in range(l+1):
                 print(str(l+1),end='')
+            print(' ', end= '')
+        print()
+
+
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
