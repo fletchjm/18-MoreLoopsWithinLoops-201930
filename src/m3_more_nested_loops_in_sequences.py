@@ -11,7 +11,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 def main():
     """ Calls the other functions to test them. """
     run_test_largest_number()
-    #run_test_largest_negative_number()
+    run_test_largest_negative_number()
     run_test_first_is_elsewhere_too()
 
 
@@ -164,7 +164,7 @@ def largest_negative_number(seq_seq):
     where each subsequence contains only numbers.
     """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # CHALLENGE: Try to solve this problem with no additional sequences
@@ -172,23 +172,21 @@ def largest_negative_number(seq_seq):
     #   give sequence of sequences plus any non-list variables you want).
     # -------------------------------------------------------------------------
     x = 0
-    y = 0
     found = False
     for k in range(len(seq_seq)):
-        if seq_seq[k] == None:
-            if found == False:
-                x = k + 1
-        else:
+        if seq_seq[k] != None:
             for l in range(len(seq_seq[k])):
                 if seq_seq[k][l] < 0:
+                    if found == False:
+                        x = seq_seq[k][l]
                     found = True
-                    if seq_seq[k][l] > seq_seq[x][y]:
-                        x = k
-                        y = l
+                    if seq_seq[k][l] > x:
+                        x = seq_seq[k][l]
+
     if found == False:
         return None
     else:
-        return seq_seq[x][y]
+        return x
 
 
 def run_test_first_is_elsewhere_too():
@@ -422,7 +420,7 @@ def first_is_elsewhere_too(seq_seq):
     and the given argument is a sequence of sequences.
     """
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement and test this function.
+    # DONE: 6. Implement and test this function.
     #          Some tests are already written for you (above).
     #
     # IMPLEMENTATION RESTRICTION:
@@ -439,10 +437,12 @@ def first_is_elsewhere_too(seq_seq):
     # -------------------------------------------------------------------------
 
     for k in range(len(seq_seq) - 1):
-        for l in range(len(seq_seq[0])):
-            for j in range(len(seq_seq[k + 1])):
-                if seq_seq[k][j] == seq_seq[0][l]:
-                    return True
+        for i in range(len(seq_seq[0])):
+            if seq_seq[k + 1] != None:
+                for j in range(len(seq_seq[k + 1])):
+
+                    if seq_seq[k + 1][j] == seq_seq[0][i]:
+                        return True
     return False
 
 
